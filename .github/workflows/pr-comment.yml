@@ -1,0 +1,33 @@
+name: do-it-comment
+
+on:
+  issue_comment:
+    types: [created]
+
+env:
+  TOPIC: ${{ secrets.TOPIC }}
+
+jobs:
+  do-it-comment:
+    runs-on: ubuntu-latest
+    if: contains(github.event.comment.body, '/do-it')
+    steps:
+      - name: set label
+        env:
+          COMMENT_BODY: ${{github.event.comment.body}}
+        run: |
+          echo LABEL=$(echo $COMMENT_BODY | cut -d' ' -f2) >> $GITHUB_ENV
+
+      - uses: actions/checkout@v1
+      - name: Add commit comment
+        run: |
+          jq -nc "{\"body\": \"@${{ github.event.comment.user.login }}, doing the thing for you\"}" | \
+          curl -sL  -X POST -d @- \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/${{ github.event.issue.number }}/comments"
+
+      - name: do-it
+        run: |
+          echo "{ \"kind\": \"object", \"topic\": \"$TOPIC\", \"parameters\": { \"tag\": \"pr-${{ github.event.issue.number }}\", \"label\": \"${{ env.LABEL }}\", \"actor\": \"$GITHUB_ACTOR\" } }" \
+          jq '.'
