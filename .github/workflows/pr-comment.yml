@@ -34,5 +34,5 @@ jobs:
 
       - name: do-it
         run: |
-          echo "{ \"kind\": \"object", \"topic\": \"$TOPIC\", \"parameters\": { \"tag\": \"pr-${{ github.event.issue.number }}\", \"label\": \"${{ env.LABEL }}\", \"actor\": \"$GITHUB_ACTOR\" } }" \
+          echo "{ \"kind\": \"object\", \"topic\": \"$TOPIC\", \"parameters\": { \"tag\": \"pr-${{ github.event.issue.number }}\", \"label\": \"${{ env.LABEL }}\", \"actor\": \"$GITHUB_ACTOR\" } }" \
           jq '.'
