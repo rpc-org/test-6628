@@ -8,6 +8,11 @@ env:
   TOPIC: ${{ secrets.TOPIC }}
 
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hmarr/debug-action@v2
+
   do-it-comment:
     runs-on: ubuntu-latest
     if: contains(github.event.comment.body, '/do-it')
