@@ -5,7 +5,7 @@ on:
     types: [created]
 
 env:
-  TOPIC: ${{ secrets.secrets.TOPIC }}
+  TOPIC: ${{ secrets.TOPIC }}
 
 jobs:
   debug:
