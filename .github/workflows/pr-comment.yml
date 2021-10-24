@@ -22,6 +22,7 @@ jobs:
           COMMENT_BODY: ${{github.event.comment.body}}
         run: |
           echo LABEL=$(echo $COMMENT_BODY | cut -d' ' -f2) >> $GITHUB_ENV
+          cat $GITHUB_ENV
 
       - uses: actions/checkout@v1
       - name: Add commit comment
@@ -34,5 +35,6 @@ jobs:
 
       - name: do-it
         run: |
+          printf "%q\n" "$COMMENT_BODY"
           echo "{ \"kind\": \"object\", \"topic\": \"$TOPIC\", \"parameters\": { \"tag\": \"pr-${{ github.event.issue.number }}\", \"label\": \"${{ env.LABEL }}\", \"actor\": \"$GITHUB_ACTOR\" } }" \
           jq '.'
