@@ -1,0 +1,3 @@
+disable-default-queries: true
+paths:
+  - .github/workflows
