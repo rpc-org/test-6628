@@ -17,6 +17,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
     
     - run: echo 'console.log("JS stub for CodeQL");' >"$GITHUB_WORKSPACE/codeql-stub.js"
 
