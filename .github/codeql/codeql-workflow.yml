@@ -3,3 +3,4 @@ queries:
   - uses: ./.github/codeql/actions-security.qls
 paths:
   - .github/workflows
+  - .github/codeql/codeql-stub.js
