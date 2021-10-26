@@ -1,5 +1,5 @@
 disable-default-queries: true
 queries:
-  - uses: ./github/codeql/actions-security.qls
+  - uses: ./.github/codeql/actions-security.qls
 paths:
   - .github/workflows
