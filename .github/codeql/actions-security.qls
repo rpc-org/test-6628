@@ -1,0 +1,3 @@
+- description: Experimental security queries for GitHub Actions workflow files
+- queries: experimental/Security/CWE-094
+  from: codeql/javascript-queries
