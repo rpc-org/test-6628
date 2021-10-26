@@ -20,8 +20,6 @@ jobs:
       with:
         persist-credentials: false
     
-    - run: echo 'console.log("JS stub for CodeQL");' >"$GITHUB_WORKSPACE/codeql-stub.js"
-
     - uses: github/codeql-action/init@v1
       with:
         config-file: ./.github/codeql/codeql-workflow.yml
