@@ -1,0 +1,26 @@
+name: API request
+
+on: workflow-dispatch
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hmarr/debug-action@v2
+
+  make-request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: octokit/request-action@v2
+        id: octokit-request
+        with:
+          route: GET /repos/{owner}/{repo}/code-scanning/analyses
+          owner: rpc-org
+          repo: test-6628
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: |
+          echo "$RESPONSE" | jq '.'
+        env: 
+          RESPONSE: ${{ toJSON(steps.octokit-request.outputs.data) }}
