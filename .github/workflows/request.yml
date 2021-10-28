@@ -14,9 +14,10 @@ jobs:
       - uses: octokit/request-action@v2.x
         id: octokit-request
         with:
-          route: GET /repos/{owner}/{repo}/code-scanning/analyses
+          route: DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis-id}
           owner: rpc-org
           repo: test-6628
+          analysis-id: 14839897
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
