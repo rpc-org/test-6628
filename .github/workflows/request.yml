@@ -11,7 +11,7 @@ jobs:
   make-request:
     runs-on: ubuntu-latest
     steps:
-      - uses: octokit/request-action@v2
+      - uses: octokit/request-action@v2.x
         id: octokit-request
         with:
           route: GET /repos/{owner}/{repo}/code-scanning/analyses
