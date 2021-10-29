@@ -18,10 +18,16 @@ runs:
         ANALYSIS_PATHS=( "$DATA_PATH/codeql-stub.js" .github/workflows )
         echo "${ANALYSIS_PATHS[*]}"
 
-    #- uses: github/codeql-action/init@v1
-    #  with:
-    #    config-file: ./${{ config-file-path }}
-    #    queries: ./${{ query-file-path }}
-    #    languages: javascript
+    - uses: github/codeql-action/init@v1
+      with:
+        config-file: ./${{ inputs.data-path }}/codeql-workflow.yml
+        queries: ./${{ inputs.data-path }}/actions-security.qls
+        languages: javascript
+      env:
+        LGTM_INDEX_INCLUDE: .github/codeql/codeql-stub.js
+        LGTM_INDEX_FILTERS: include:.github/codeql/codeql-stub.js
 
-    #- uses: github/codeql-action/analyze@v1
+    - uses: github/codeql-action/analyze@v1
+      env:
+        LGTM_INDEX_INCLUDE: .github/codeql/codeql-stub.js
+        LGTM_INDEX_FILTERS: include:.github/codeql/codeql-stub.js
