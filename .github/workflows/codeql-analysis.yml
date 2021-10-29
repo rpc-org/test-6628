@@ -18,7 +18,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        path: .github/workflows
         persist-credentials: false
     
     - uses: github/codeql-action/init@v1
