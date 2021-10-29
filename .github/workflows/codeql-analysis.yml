@@ -26,3 +26,8 @@ jobs:
         languages: 'javascript'
 
     - uses: github/codeql-action/analyze@v1
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: sarif-files
+        path: ../results/*.sarif
