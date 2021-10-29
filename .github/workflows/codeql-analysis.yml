@@ -20,21 +20,4 @@ jobs:
       with:
         persist-credentials: false
     
-    - uses: github/codeql-action/init@v1
-      with:
-        config-file: ./.github/codeql/codeql-workflow.yml
-        queries: ./.github/codeql/actions-security.qls
-        languages: 'javascript'
-      env:
-        LGTM_INDEX_INCLUDE: .github/codeql/codeql-stub.js
-        LGTM_INDEX_FILTERS: include:.github/codeql/codeql-stub.js
-
-    - uses: github/codeql-action/analyze@v1
-      env:
-        LGTM_INDEX_INCLUDE: .github/codeql/codeql-stub.js
-        LGTM_INDEX_FILTERS: include:.github/codeql/codeql-stub.js
-
-    - uses: actions/upload-artifact@v2
-      with:
-        name: sarif-files
-        path: /home/runner/work/test-6628/results/*.sarif
+    - uses: ./.github/actions/workflow-scan-action
