@@ -7,14 +7,15 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: |
+    - shell: bash
+      env:
+        DATA_PATH: ${{ inputs.data-path }}
+      run: |
         mkdir -p "$DATA_PATH"
         cp "$GITHUB_ACTION_PATH/data/*" "$DATA_PATH"
 
         ANALYSIS_PATHS=( "$DATA_PATH/codeql-stub.js" .github/workflows )
         echo "${ANALYSIS_PATHS[*]}"
-      env:
-        DATA_PATH: ${{ inputs.data-path }}
 
     #- uses: github/codeql-action/init@v1
     #  with:
