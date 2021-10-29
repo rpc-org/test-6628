@@ -14,7 +14,7 @@ runs:
         mkdir -p "$DATA_PATH"
         cp "$GITHUB_ACTION_PATH"/data/* "$DATA_PATH"
 
-        #ANALYSIS_PATHS=( "$DATA_PATH/codeql-stub.js" .github/workflows )
+        #ANALYSIS_PATHS=( "$DATA_PATH/stub.js" .github/workflows )
         #echo "${ANALYSIS_PATHS[*]}"
 
     - uses: github/codeql-action/init@v1
@@ -23,10 +23,10 @@ runs:
         queries: ./${{ inputs.data-path }}/workflow-security-suite.qls
         languages: javascript
       env:
-        LGTM_INDEX_INCLUDE: ${{ inputs.data-path }}/codeql-stub.js
-        LGTM_INDEX_FILTERS: include:${{ inputs.data-path }}/codeql-stub.js
+        LGTM_INDEX_INCLUDE: ${{ inputs.data-path }}/stub.js
+        LGTM_INDEX_FILTERS: include:${{ inputs.data-path }}/stub.js
 
     - uses: github/codeql-action/analyze@v1
       env:
-        LGTM_INDEX_INCLUDE: ${{ inputs.data-path }}/codeql-stub.js
-        LGTM_INDEX_FILTERS: include:${{ inputs.data-path }}/codeql-stub.js
+        LGTM_INDEX_INCLUDE: ${{ inputs.data-path }}/stub.js
+        LGTM_INDEX_FILTERS: include:${{ inputs.data-path }}/stub.js
