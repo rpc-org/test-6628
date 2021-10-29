@@ -1,11 +1,25 @@
 name: Workflow Scan Action
 description: Scan GitHub Actions workflow files with CodeQL
+inputs:
+  data-path:
+    description: Specifies where the data files needed by the action will be copied (must be relative to $GITHUB_WORKSPACE)
+    default: .github/workflow-scan-data
 runs:
   using: composite
   steps:
-    - uses: github/codeql-action/init@v1
-      with:
-        config-file: ${{ github.action_path }}/codeql-workflow.yml
-        languages: javascript
+    - run: |
+        mkdir -p "$DATA_PATH"
+        cp "$GITHUB_ACTION_PATH/data/*" "$DATA_PATH"
 
-    - uses: github/codeql-action/analyze@v1
+        ANALYSIS_PATHS=( "$DATA_PATH/codeql-stub.js" .github/workflows )
+        echo "${ANALYSIS_PATHS[*]}"
+      env:
+        DATA_PATH: ${{ inputs.data-path }}
+
+    #- uses: github/codeql-action/init@v1
+    #  with:
+    #    config-file: ./${{ config-file-path }}
+    #    queries: ./${{ query-file-path }}
+    #    languages: javascript
+
+    #- uses: github/codeql-action/analyze@v1
