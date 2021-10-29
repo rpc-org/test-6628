@@ -22,8 +22,8 @@ jobs:
     
     - uses: github/codeql-action/init@v1
       with:
-        config-file: .github/codeql/codeql-workflow.yml
-        queries: .github/codeql/actions-security.qls
+        config-file: ./.github/codeql/codeql-workflow.yml
+        queries: ./.github/codeql/actions-security.qls
         languages: 'javascript'
       env:
         LGTM_INDEX_INCLUDE: .github/codeql/codeql-stub.js
