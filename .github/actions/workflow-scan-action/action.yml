@@ -1,0 +1,11 @@
+name: Workflow Scan Action
+description: Scan GitHub Actions workflow files with CodeQL
+runs:
+  using: composite
+  steps:
+    - uses: github/codeql-action/init@v1
+      with:
+        config-file: ${{ github.action_path }}/codeql-workflow.yml
+        languages: javascript
+
+    - uses: github/codeql-action/analyze@v1
