@@ -1,4 +1,1 @@
 disable-default-queries: true
-paths:
-  - .github/workflows
-  - .github/codeql/codeql-stub.js
