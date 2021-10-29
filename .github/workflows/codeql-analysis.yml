@@ -22,9 +22,9 @@ jobs:
     
     - uses: github/codeql-action/init@v1
       with:
-        config-file: ./.github/codeql/codeql-workflow.yml
+        config-file: ${{ github.workspace }}/.github/codeql/codeql-workflow.yml
+        queries: ${{ github.workspace }}/.github/codeql/actions-security.qls
         languages: 'javascript'
-        queries: ./.github/codeql/actions-security.qls
 
     - uses: github/codeql-action/analyze@v1
 
