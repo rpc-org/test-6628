@@ -18,6 +18,7 @@ jobs:
           owner: rpc-org
           repo: test-6628
           analysis-id: 14839897
+          mediaType: '{ "format": "application/sarif+json" }'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
