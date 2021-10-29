@@ -13,8 +13,7 @@ runs:
         DATA_PATH: ${{ inputs.data-path }}
       run: |
         mkdir -p "$DATA_PATH"
-        ls data
-        cp "data/*" "$DATA_PATH"
+        cp data/* "$DATA_PATH"
 
         ANALYSIS_PATHS=( "$DATA_PATH/codeql-stub.js" .github/workflows )
         echo "${ANALYSIS_PATHS[*]}"
