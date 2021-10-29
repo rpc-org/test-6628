@@ -26,4 +26,4 @@ jobs:
       - run: |
           echo "$RESPONSE" | jq '.'
         env: 
-          RESPONSE: ${{ toJSON(steps.octokit-request.outputs.data) }}
+          RESPONSE: ${{ steps.octokit-request.outputs.data }}
