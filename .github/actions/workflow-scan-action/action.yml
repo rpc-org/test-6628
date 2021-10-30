@@ -7,11 +7,10 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: setup.sh
+    - run: . "$GITHUB_ACTION_PATH/setup.sh"
       shell: bash
       env:
         DATA_DIR_NAME: ${{ inputs.data-dir-name }}
-      
 
     - uses: github/codeql-action/init@v1
       with:
