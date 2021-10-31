@@ -2,5 +2,4 @@
 - queries: .
   from: codeql/javascript-queries
   include:
-    tags contain all: [actions, security, doesntexist]
-
+    tags contain all: [actions, security]
