@@ -20,4 +20,4 @@ jobs:
       with:
         persist-credentials: false
     
-    - uses: ./.github/actions/workflow-scan-action
+    - uses: rcowsill/workflow-scan-action@d4fbff1777a5b616059ee9830d94b02432063928
