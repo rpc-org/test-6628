@@ -1,5 +1,7 @@
-on: issue_comment
+on:
+  issue_comment: [created]
 
+# Test workflow
 jobs:
   echo-body:
     runs-on: ubuntu-latest
