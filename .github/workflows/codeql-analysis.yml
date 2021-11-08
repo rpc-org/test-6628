@@ -20,8 +20,8 @@ jobs:
       with:
         persist-credentials: false
     
-    - uses: rcowsill/workflow-scan-action@d19c41d0c01d22a70be13e86337518c043f936c4
+    - uses: rcowsill/workflow-scan-action@v1
       with:
         use-default-queries: false
-        extra-queries: rcowsill/workflow-scan-action/data/workflow-security-suite.qls@d19c41d0c01d22a70be13e86337518c043f936c4
+        extra-queries: rcowsill/workflow-scan-action/data/workflow-security-suite.qls@v1
 
