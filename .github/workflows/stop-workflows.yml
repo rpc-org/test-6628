@@ -21,7 +21,7 @@ jobs:
             for (const workflow of workflows) {
               core.info(`Disabling workflow ${workflow.name} (${workflow.id})`);
 
-              octokit.rest.actions.disableWorkflow({
+              github.rest.actions.disableWorkflow({
                 ...context.repo,
                 workflow_id: workflow.id
               });
