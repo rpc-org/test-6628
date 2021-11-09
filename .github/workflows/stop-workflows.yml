@@ -14,7 +14,7 @@ jobs:
       - uses: actions/github-script@v5
         with:
           script: |
-            const workflows = await (
+            const workflows = await github.paginate(
               github.rest.actions.listRepoWorkflows.endpoint.merge(context.repo)
             );
 
