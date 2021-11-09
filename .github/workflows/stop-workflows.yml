@@ -20,7 +20,7 @@ jobs:
             };
 
             const workflows = await github.paginate(
-              github.rest.actions.listRepoWorkflows(), repoParams
+              github.rest.actions.listRepoWorkflows(repoParams)
             );
 
             core.info(JSON.stringify(workflows));
