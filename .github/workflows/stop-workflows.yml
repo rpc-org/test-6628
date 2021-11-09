@@ -1,14 +1,9 @@
-name: API request
+name: Stop all workflows
 
 on: workflow_dispatch
 
 jobs:
-  debug:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: hmarr/debug-action@v2
-      
-  stop-workflows:
+  stop-all-workflows:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v5
