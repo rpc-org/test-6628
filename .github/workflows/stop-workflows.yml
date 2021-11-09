@@ -12,14 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v5
-        script: |
-          const repoParams = {
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-          };
+        with:
+          script: |
+            const repoParams = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            };
 
-          const workflows = await github.paginate(
-            github.rest.actions.listRepoWorkflows(), repoParams
-          );
+            const workflows = await github.paginate(
+              github.rest.actions.listRepoWorkflows(), repoParams
+            );
 
-          core.info(JSON.stringify(workflows));
+            core.info(JSON.stringify(workflows));
