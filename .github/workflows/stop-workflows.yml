@@ -19,10 +19,12 @@ jobs:
             );
 
             for (const workflow of workflows) {
-              core.info(`Disabling workflow ${workflow.name} (${workflow.id})`);
+              if (workflow.active === true) {
+                core.info(`Disabling workflow ${workflow.name} (${workflow.id})`);
 
-              github.rest.actions.disableWorkflow({
-                ...context.repo,
-                workflow_id: workflow.id
-              });
+                github.rest.actions.disableWorkflow({
+                  ...context.repo,
+                  workflow_id: workflow.id
+                });
+              }
             }
