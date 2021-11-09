@@ -1,4 +1,4 @@
-name: Stop all workflows
+name: API request
 
 on: workflow_dispatch
 
