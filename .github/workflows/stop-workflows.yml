@@ -1,0 +1,25 @@
+name: Stop all workflows
+
+on: workflow_dispatch
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hmarr/debug-action@v2
+      
+  stop-workflows:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v5
+        script: |
+          const repoParams = {
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+          };
+
+          const workflows = await github.paginate(
+            github.rest.actions.listRepoWorkflows(), repoParams
+          );
+
+          core.info(JSON.stringify(workflows));
