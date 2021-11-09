@@ -14,13 +14,8 @@ jobs:
       - uses: actions/github-script@v5
         with:
           script: |
-            const repoParams = {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-            };
-
             const workflows = await (
-              github.rest.actions.listRepoWorkflows(repoParams)
+              github.rest.actions.listRepoWorkflows.endpoint.merge(context.repo)
             );
 
             core.info(JSON.stringify(workflows));
