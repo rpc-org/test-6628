@@ -19,7 +19,7 @@ jobs:
               repo: context.repo.repo,
             };
 
-            const workflows = await github.paginate(
+            const workflows = await (
               github.rest.actions.listRepoWorkflows(repoParams)
             );
 
